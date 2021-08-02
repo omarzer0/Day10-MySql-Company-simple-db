@@ -1,0 +1,73 @@
+
+CREATE DATABASE Company;
+
+CREATE TABLE if not EXISTS Employee(
+    pname VARCHAR(50),
+    minit VARCHAR(50),
+    lname VARCHAR(50),
+    ssn INT PRIMARY KEY AUTO_INCREMENT,
+    bdate VARCHAR(50),
+    address VARCHAR(50),
+    gender ENUM('male', 'female'),
+    dno int,
+    superssn int
+);
+
+CREATE TABLE if not EXISTS Department(
+    dname varchar(50),
+    dnumber int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    mgrssn int,
+    msgStartDate varchar(50)    
+);
+
+CREATE TABLE if not EXISTS Dept_Locations(
+    dnumber int,
+    dlocation varchar(50) NOT NULL,
+    
+   CONSTRAINT pkey PRIMARY KEY (dnumber, dlocation)
+);
+
+
+CREATE TABLE if not EXISTS Project(
+	pname varchar(50),
+    pnumber int PRIMARY KEY AUTO_INCREMENT  NOT NULL,
+    plocation varchar(50),
+    dnum int
+);
+
+
+CREATE TABLE if not EXISTS Works_On(
+    essn int,
+    pno int,
+	hours int,
+	CONSTRAINT pkey PRIMARY KEY (essn, pno)  
+);
+
+
+CREATE TABLE if not EXISTS Dependent(
+    essn int,
+	dependent_name varchar(50),
+    gender ENUM('male','female'),
+    bdate varchar(50),
+    relationship varchar(50),
+    
+   CONSTRAINT pkey PRIMARY KEY (essn, dependent_name)
+);
+
+ 
+alter table Employee add FOREIGN KEY (superssn) REFERENCES  Employee(ssn);
+
+alter table Employee add FOREIGN KEY (dno) REFERENCES Department(dnumber);
+
+alter table Department add FOREIGN KEY (mgrssn) REFERENCES Employee(ssn);
+
+alter table Dept_Locations add FOREIGN KEY (dnumber) REFERENCES Department(dnumber);
+
+alter table Project add FOREIGN KEY (dnum) REFERENCES Department(dnumber);
+
+alter table Works_On add FOREIGN KEY (essn) REFERENCES Employee(ssn);
+
+alter table Works_On add FOREIGN KEY (pno) REFERENCES Project(pnumber);
+
+alter table Dependent add FOREIGN KEY (essn) REFERENCES Employee(ssn);
+
