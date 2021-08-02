@@ -1,6 +1,12 @@
 # Day10-MySql-Company-simple-db
 ## [In this lab we implemented the following Rational model.](https://docs.google.com/document/d/1zAr0oeCErP4PWxdaBg-X9PjBfVA9Fy5Yk2GBP2UzjZw/edit)
 
+
+<p align="center">
+  <img src="https://github.com/omarzer0/Day10-MySql-Company-simple-db/blob/main/day10/assets/day10-task.PNG" alt="day 10 task" width="50%"/>
+</p>
+
+
 ### How I created it using command line:
 - Download [xampp](https://www.apachefriends.org/index.html).
 - Start Xampp.
